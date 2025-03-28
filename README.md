@@ -59,25 +59,25 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   Open another new terminal, edit `ROCKET_PORT` in `.env` to `8003`, then execute `cargo run`.
 
 ## Mandatory Checklists (Subscriber)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create SubscriberRequest model struct.`
-    -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create SubscriberRequest model struct.`
+    -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Notification repository.`
+    -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -90,3 +90,8 @@ This is the place for you to write reflections:
 2. Rust tidak mengizinkan dengan tujuan untuk mencegah masalah dalam multi-threading. Secara default, static variable di Rust bersifat immutable demi keamanan dalam concurrency. Dalam kasus ini, lazy_static digunakan untuk menginisialisasi variabel saat pertama kali dipanggil dan menjadikannya sebagai Singleton. Selain itu, agar dapat mutable, digunakan RwLock<>, yang memungkinkan read dan write secara bersamaan pada Vec<Notification>.
 
 #### Reflection Subscriber-2
+1. File src/lib.rs berperan sebagai modul utama dalam proyek yang kita buat. Di dalamnya terdapat import crate dan modul, serta deklarasi struktur AppConfig dan error handling.
+
+2. Jika notifikasi perlu dikirim ke semua observer akibat perubahan pada suatu instance, cukup diperlukan mekanisme komunikasi antar-instance. Jika ingin memiliki lebih dari satu instance Main App, dapat dilakukan dengan mendaftarkan observer untuk setiap instance aplikasi melalui permintaan HTTP ke API yang sesuai. Setiap instance Main App bertanggung jawab dalam menyediakan dan mengelola notifikasi untuk observer/subscriber yang terdaftar.
+
+3. Dokumentasi dalam Postman Collection mempermudah penggunaan API serta membantu dalam verifikasi respons agar sesuai dengan data di aplikasi. Dengan adanya dokumentasi ini, pengembang dapat memahami cara kerja API dengan lebih cepat dan efisien.
