@@ -85,5 +85,8 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Hal ini terjadi karena RwLock<> memungkinkan Vec<Notification> untuk dibaca secara bersamaan oleh banyak thread dalam method list_all_as_string, sementara hanya satu thread yang dapat melakukan write dalam method add. Sebaliknya, Mutex<> hanya mengizinkan satu thread untuk melakukan read maupun write pada satu waktu, sehingga lebih membatasi akses secara paralel.
+
+2. Rust tidak mengizinkan dengan tujuan untuk mencegah masalah dalam multi-threading. Secara default, static variable di Rust bersifat immutable demi keamanan dalam concurrency. Dalam kasus ini, lazy_static digunakan untuk menginisialisasi variabel saat pertama kali dipanggil dan menjadikannya sebagai Singleton. Selain itu, agar dapat mutable, digunakan RwLock<>, yang memungkinkan read dan write secara bersamaan pada Vec<Notification>.
 
 #### Reflection Subscriber-2
